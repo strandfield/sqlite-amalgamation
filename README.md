@@ -22,7 +22,7 @@ Solution: in the Visual Studio Command Prompt, run
 cl sqlite3.c -DSQLITE_API=__declspec(dllexport) -link -dll -out:sqlite3.dll
 ```
 
-**AppVeyor Builds**
+**AppVeyor Builds (Windows)**
 
 | Branch        | Status    |
 |---------------|-----------|
@@ -33,6 +33,24 @@ The AppVeyor build has been configured to produce a Windows DLL and export it as
 a copy can therefore be downloaded [here](https://ci.appveyor.com/project/strandfield/sqlite-amalgamation/build/artifacts) from the latest build.
 
 See `appveyor.yml` for more details.
+
+**Building on Linux**
+
+Using the sqlite3 dev package should work and be preferable.
+
+```bash
+sudo apt-get -y install libsqlite3-dev
+```
+
+But it is still possible to build the library manually by following the 
+steps in tutorial linked above or the instructions in `README.txt`.
+
+This repository defines a GitHub Workflow (see [C/C++ CI](https://github.com/strandfield/sqlite-amalgamation/actions/workflows/c-cpp.yml)) that builds SQLite by doing:
+
+```bash
+./configure
+make
+```
 
 **See also**
 
